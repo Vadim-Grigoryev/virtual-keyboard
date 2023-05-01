@@ -7,29 +7,11 @@ const rowSim2 = ['Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', '
 const rowSim3 = ['CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'Enter'];
 const rowSim4 = ['Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '\/', '&uarr;', 'Shift'];
 const rowSim5 = ['Ctrl', 'Win', 'Alt', ' ', 'Alt', '&larr;', '&darr;', '&rarr;', 'Ctrl'];
-const rowSim12 = ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'];
-const rowSim22 = ['Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', '[', ']','\\','Del'];
-const rowSim32 = ['CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Enter'];
-const rowSim42 = ['Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '\/', '&uarr;', 'Shift'];
 message.textContent = 'Клавиатура создана в операционной системе Windows. Для переключения языка комбинация левые: ctrl, alt';
 document.body.append(container);
 container.append(textarea);
 container.append(keyboard);
 container.append(message);
-
-let option = 0;
-let optFlag = false;
-
-const countOption = (event) => {
-  if (event.code === 'AltLeft') {
-    optFlag = true;
-  }
-  if (event.code === 'ControlLeft' && optFlag) {
-    optFlag = false;
-    option += 1;
-  }
-  return option;
-};
 
 const createRows = () => {
   for (let i = 0; i < 5; i++) {
@@ -41,14 +23,6 @@ const createRows = () => {
 
 createRows();
 
-const createdRowsJs = document.querySelectorAll('.row');
-
-const cleanRows = () => {
-  createdRowsJs.forEach((element) => {
-    element.innerHTML = '';
-  })
-};
-
 container.classList.add('container');
 textarea.classList.add('textarea');
 keyboard.classList.add('keyboard');
@@ -57,80 +31,44 @@ message.classList.add('message');
 const rows = document.querySelectorAll('.row');
 
 const createFirstRow = () => {
-  if (+option % 2 === 0) {
-    for (let i = 0; i < rowSim1.length; i++) {
-      const rowEl = document.createElement('div');
-      rowEl.classList.add('keybtn');
-      rowEl.innerHTML = `${rowSim1[i]}`;
-      rows[0].append(rowEl);
-    }
-  }
-  else {
-    for (let i = 0; i < rowSim1.length; i++) {
-      const rowEl = document.createElement('div');
-      rowEl.classList.add('keybtn');
-      rowEl.innerHTML = `${rowSim12[i]}`;
-      rows[0].append(rowEl);
-    }
+  for (let i = 0; i < rowSim1.length; i++) {
+    const rowEl = document.createElement('div');
+    rowEl.classList.add('keybtn');
+    rowEl.innerHTML = `${rowSim1[i]}`;
+    rows[0].append(rowEl);
   }
 };
+createFirstRow();
 
 const createSecondRow = () => {
-  if (+option % 2 === 0) {
-    for (let i = 0; i < rowSim2.length; i++) {
-      const rowEl = document.createElement('div');
-      rowEl.classList.add('keybtn');
-      rowEl.innerHTML = `${rowSim2[i]}`;
-      rows[1].append(rowEl);
-    }
-  }
-  else {
-    for (let i = 0; i < rowSim2.length; i++) {
-      const rowEl = document.createElement('div');
-      rowEl.classList.add('keybtn');
-      rowEl.innerHTML = `${rowSim22[i]}`;
-      rows[1].append(rowEl);
-    }
+  for (let i = 0; i < rowSim2.length; i++) {
+    const rowEl = document.createElement('div');
+    rowEl.classList.add('keybtn');
+    rowEl.innerHTML = `${rowSim2[i]}`;
+    rows[1].append(rowEl);
   }
 };
+createSecondRow();
 
 const createThirdRow = () => {
-  if (+option % 2 === 0) {
-    for (let i = 0; i < rowSim3.length; i++) {
-      const rowEl = document.createElement('div');
-      rowEl.classList.add('keybtn');
-      rowEl.innerHTML = `${rowSim3[i]}`;
-      rows[2].append(rowEl);
-    }
-  }
-  else {
-    for (let i = 0; i < rowSim3.length; i++) {
-      const rowEl = document.createElement('div');
-      rowEl.classList.add('keybtn');
-      rowEl.innerHTML = `${rowSim32[i]}`;
-      rows[2].append(rowEl);
-    }
+  for (let i = 0; i < rowSim3.length; i++) {
+    const rowEl = document.createElement('div');
+    rowEl.classList.add('keybtn');
+    rowEl.innerHTML = `${rowSim3[i]}`;
+    rows[2].append(rowEl);
   }
 };
+createThirdRow();
 
 const createFourthRow = () => {
-  if (+option % 2 === 0) {
-    for (let i = 0; i < rowSim4.length; i++) {
-      const rowEl = document.createElement('div');
-      rowEl.classList.add('keybtn');
-      rowEl.innerHTML = `${rowSim4[i]}`;
-      rows[3].append(rowEl);
-    }
-  }
-  else {
-    for (let i = 0; i < rowSim4.length; i++) {
-      const rowEl = document.createElement('div');
-      rowEl.classList.add('keybtn');
-      rowEl.innerHTML = `${rowSim42[i]}`;
-      rows[3].append(rowEl);
-    }
+  for (let i = 0; i < rowSim4.length; i++) {
+    const rowEl = document.createElement('div');
+    rowEl.classList.add('keybtn');
+    rowEl.innerHTML = `${rowSim4[i]}`;
+    rows[3].append(rowEl);
   }
 };
+createFourthRow();
 
 const createFifthRow = () => {
   for (let i = 0; i < rowSim5.length; i++) {
@@ -143,29 +81,7 @@ const createFifthRow = () => {
     rows[4].append(rowEl);
   }
 };
-
-const createRowsText = () => {
-  cleanRows();
-  createRows();
-  createFirstRow();
-  createSecondRow();
-  createThirdRow();
-  createFourthRow();
-  createFifthRow();
-};
-
-createRowsText();
-
-let launchFlag = false;
-
-const launchLanguageChange = (event) => {
-  if (event.code === 'AltLeft') {
-    launchFlag = true;
-  }
-  if (event.code === 'ControlLeft' && launchFlag) {
-    createRowsText();
-  }
-};
+createFifthRow();
 
 let count = 0;
 let flag = false;
@@ -296,5 +212,3 @@ window.addEventListener('keydown', keyTab);
 window.addEventListener('keydown', showArrow);
 window.addEventListener('keydown', showTouch);
 window.addEventListener('keyup', showTouch);
-window.addEventListener('keydown', countOption);
-window.addEventListener('keydown', launchLanguageChange);
